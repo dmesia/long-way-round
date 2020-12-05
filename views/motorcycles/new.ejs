@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long Way Round</title>
+</head>
+
+<body>
+    <nav>
+        <h2>Long Way Round - Motorcycle Diary</h2>
+        <a href="/">Home</a>
+        <a href="/riders">Riders</a>
+        <a href="/motorcycles">Motorcycles</a>
+    </nav>
+    <main>
+        <h1>New Motorcycle</h1>
+        <form action="/motorcycles" method="POST">
+            <label>Year:
+                <input type="text" name="year">
+            </label>
+            <label>Make:
+                <input type="text" name="make">
+            </label>
+            <label>Model:
+                <input type="text" name="model">
+            </label>
+            <label>Style:
+                <select name="style">
+                    <option value="Standard">Standard</option>
+                    <option value="Cruiser">Cruiser</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Touring">Touring</option>
+                    <option value="ADV">ADV</option>
+                    <option value="Dirt">Dirt</option>
+                </select>
+            </label>
+            <input type="submit" value="Add Motorcycle">
+        </form>
+    </main>
+</body>
+
+</html>

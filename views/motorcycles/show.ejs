@@ -15,25 +15,26 @@
         <a href="/motorcycles">Motorcycles</a>
     </nav>
     <main>
-        <h1>Motorcycles</h1>
+        <h1>Motorcycle Details</h1>
         <table>
             <thead>
                 <th>Year</th>
                 <th>Make</th>
                 <th>Model</th>
+                <th>Style</th>
             </thead>
             <tbody>
-                <% motorcycles.forEach( motorcycle => { %>
                 <tr>
                     <td><%= motorcycle.year %></td>
                     <td><%= motorcycle.make %></td>
                     <td><%= motorcycle.model %></td>
-                    <td><a href="/motorcycles/<%= motorcycle._id %>" id="details">Details</a></td>
+                    <td><%= motorcycle.style %></td>
                 </tr>
-                <% }); %>
             </tbody>
         </table>
-        <a href="/motorcycles/new">Add Motorcycle</a>
+        <form action="/motorcycles/<%= motorcycle._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete Motorcycle</button>
+        </form>
     </main>
 </body>
 

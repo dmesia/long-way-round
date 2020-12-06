@@ -1,9 +1,13 @@
+const motorcycle = require('../models/motorcycle');
 const Motorcycle = require('../models/motorcycle');
 
 module.exports = {
     index,
     new: newMotorcycle,
-    create
+    create,
+    show,
+    deleteMotorcycle,
+    addComment
 };
 
 function index(req, res) {
@@ -23,5 +27,28 @@ function create(req, res) {
         console.log(motorcycle);
         if (err) return res.render('motorcycles/new');
         res.redirect('/motorcycles');
+    });
+};
+
+function show(req, res) {
+    Motorcycle.findById(req.params.id, function(err, motorcycle) {
+        res.render('motorcycles/show', { motorcycle });
+    });
+};
+
+function deleteMotorcycle(req, res) {
+    Motorcycle.findByIdAndDelete(req.params.id, function(err, motorcycle) {
+        if(err) return res.redirect('/motorcycles');
+        console.log(motorcycle);
+        res.redirect('/motorcycles');
+    });
+};
+
+function addComment(req, res) {
+    Motorcycle.findById(req.params.id, function(err, motorcycles) {
+        motorcycle.comments.push(req.body);
+        motorcycle.save(function(err, motorcycle) {
+            res.redirect(`/motorcycles/${motorcycle._id}`);
+        });
     });
 };

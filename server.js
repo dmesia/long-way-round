@@ -1,11 +1,15 @@
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const session = require('express-session');
+const passport = require('passport');
 const port = 3000;
 
-const app = express();
-
+require('dotenv').config();
 require('./config/database');
+require('./config/passport');
+
+const app = express();
 
 const indexRoutes = require('./routes/index');
 const ridersRoutes = require('./routes/riders');
@@ -18,6 +22,15 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use('/', indexRoutes);
 app.use('/', ridersRoutes);

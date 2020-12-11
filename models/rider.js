@@ -1,29 +1,14 @@
 const mongoose = require('mongoose');
 
-const tripSchema = new mongoose.Schema({
-    motorcycle: {
-        type: mongoose.Types.ObjectId,
-        ref: 'Motorcycle'
-    },
-    start: {
-        type: Date,
-        default: function() {
-            const date = Date();
-            const year = date.getFullYear();
-            date.setFullYear(year);
-            return date;
-        }
-    },
-    end: Date,
-    text: String
-}, {
-    timestamps: true
-});
+const Schema = mongoose.Schema;
 
-const riderSchema = new mongoose.Schema({
+const riderSchema = new Schema({
     name: String,
     email: String,
-    trips: [tripSchema],
+    avatarURL:String,
+    trips: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Motorcycle'},
     googleId: String
 }, {
     timestamps: true

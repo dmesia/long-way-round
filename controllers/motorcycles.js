@@ -1,4 +1,3 @@
-const motorcycle = require('../models/motorcycle');
 const Motorcycle = require('../models/motorcycle');
 
 module.exports = {

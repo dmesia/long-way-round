@@ -9,13 +9,25 @@
 
 <body>
     <nav>
-        <h2>Long Way Round - Motorcycle Diary</h2>
-        <a href="/">Home</a>
-        <a href="/riders">Riders</a>
-        <a href="/motorcycles">Motorcycles</a>
+        <h2>Long Way Round - Motorcycle Diaries</h2>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/riders">Riders</a></li>
+            <li><a href="/motorcycles">Motorcycles</a></li>
+            <li>
+                <% if(user) { %>
+                    <a href="/logout">Logout</a>
+                <% } else { %>
+                    <a href="/auth/google">Login With Google</a>
+                <% } %>
+            </li>
+        </ul>
     </nav>
     <main>
-        <h1>Riders Here</h1>
+        <div>
+            <a href="/trips/new">New Ride</a>
+            <p>riders here</p>
+        </div>
     </main>
 </body>
 

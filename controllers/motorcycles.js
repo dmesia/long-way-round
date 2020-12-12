@@ -5,8 +5,7 @@ module.exports = {
     new: newMotorcycle,
     create,
     show,
-    deleteMotorcycle,
-    addComment
+    deleteMotorcycle
 };
 
 function index(req, res) {
@@ -40,14 +39,5 @@ function deleteMotorcycle(req, res) {
         if(err) return res.redirect('/motorcycles');
         console.log(motorcycle);
         res.redirect('/motorcycles');
-    });
-};
-
-function addComment(req, res) {
-    Motorcycle.findById(req.params.id, function(err, motorcycles) {
-        motorcycle.comments.push(req.body);
-        motorcycle.save(function(err, motorcycle) {
-            res.redirect(`/motorcycles/${motorcycle._id}`);
-        });
     });
 };

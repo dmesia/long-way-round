@@ -4,29 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <title>Long Way Round</title>
 </head>
 
 <body>
-    <nav>
-        <h2>Long Way Round - Motorcycle Diaries</h2>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/riders">Riders</a></li>
-            <li><a href="/motorcycles">Motorcycles</a></li>
-            <li>
-                <% if(user) { %>
+    <div class="container-fluid">
+        <nav>
+            <h2>Long Way Round - Motorcycle Diaries</h2>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/riders">Riders</a></li>
+                <li><a href="/motorcycles">Motorcycles</a></li>
+                <li>
+                    <% if(user) { %>
                     <a href="/logout">Logout</a>
-                <% } else { %>
+                    <% } else { %>
                     <a href="/auth/google">Login With Google</a>
-                <% } %>
-            </li>
-        </ul>
-    </nav>
+                    <% } %>
+                </li>
+            </ul>
+        </nav>
+    </div>
     <main>
-        <div>
-            <a href="/trips/new">New Ride</a>
-            <p>riders here</p>
+        <div class="container">
+            <% riders.forEach(rider => { %>
+            <span>
+                <img src="<%= rider.avatarURL %>" />
+                <span><%= rider.name %></span>
+            </span>
+            <ul>
+                <% rider.trips.forEach(trip => { %>
+                <li><%= `On ${trip.start} you rode a ${trip.motorcycle.year} ${trip.motorcycle.make} ${trip.motorcycle.model}.` %>
+                </li>
+                <% }) %>
+            </ul>
+            <% if(rider._id.equals(user && user._id)) { %>
+            <div>
+                <a href="/trips/new">Add Ride</a>
+            </div>
+            <% } %>
+            <% }) %>
         </div>
     </main>
 </body>

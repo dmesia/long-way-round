@@ -6,9 +6,9 @@ const riderSchema = new Schema({
     name: String,
     email: String,
     avatarURL:String,
-    trips: {
+    trips: [{
         type: mongoose.Types.ObjectId,
-        ref: 'Motorcycle'},
+        ref: 'Trip'}],
     googleId: String
 }, {
     timestamps: true

@@ -17,7 +17,11 @@ const tripSchema = new Schema({
         }
     },
     end: Date,
-    text: String
+    text: String,
+    rider: {
+        type: mongoose.Types.ObjectId,
+        ref:'Rider'
+    }
 }, {
     timestamps: true
 });

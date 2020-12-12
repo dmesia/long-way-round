@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Long Way Round</title>
+</head>
+
+<body>
+    <nav>
+        <h2>Long Way Round - Motorcycle Diaries</h2>
+        <a href="/">Home</a>
+        <a href="/riders">Riders</a>
+        <a href="/motorcycles">Motorcycles</a>
+    </nav>
+    <main>
+        <h1>New Ride</h1>
+        <form action="/trips" method="POST">
+            <label>Motorcycle used:
+                <select name="motorcycles">
+                    <% motorcycles.forEach(motorcycle => { %>
+                        <option><%= motorcycle.year %> <%= motorcycle.model %></option>
+                    <% }) %>
+                </select>
+            </label>
+            <label>Start:
+                <input type="datetime-local" name="start">
+            </label>
+            <label>End:
+                <input type="datetime-local" name="end">
+            </label>
+            <input type="submit" value="Add Ride">
+        </form>
+    </main>
+</body>
+
+</html>

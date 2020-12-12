@@ -14,6 +14,7 @@ const app = express();
 const indexRoutes = require('./routes/index');
 const ridersRoutes = require('./routes/riders');
 const motorcyclesRoutes = require('./routes/motorcycles');
+const tripsRoutes = require('./routes/trips');
 
 app.set('view engine', 'ejs');
 
@@ -35,6 +36,7 @@ app.use(passport.session());
 app.use('/', indexRoutes);
 app.use('/', ridersRoutes);
 app.use('/', motorcyclesRoutes);
+app.use('/', tripsRoutes);
 
 app.listen(port, function() {
     console.log(`Express is listening on port:${port}`);

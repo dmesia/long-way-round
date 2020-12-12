@@ -17,7 +17,7 @@ const motorcycleSchema = new Schema({
         type: String,
         enum: ['Standard', 'Cruiser', 'Sport', 'Touring', 'ADV', 'Dirt']
     },
-    comments: [commentSchema]
+    comments:[commentSchema]
 }, {
     timestamps: true
 });

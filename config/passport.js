@@ -16,7 +16,8 @@ passport.use(new GoogleStrategy({
             const newRider = new Rider({
                 name: profile.displayName,
                 email: profile.emails[0].value,
-                googleId: profile.id
+                googleId: profile.id,
+                avatarURL:profile._json.picture
             });
             newRider.save(function(err) {
                 if(err) return cb(err);

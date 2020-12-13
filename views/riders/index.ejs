@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
         <nav>
             <h2>Long Way Round - Motorcycle Diaries</h2>
             <ul>
@@ -36,8 +36,8 @@
             </span>
             <ul>
                 <% rider.trips.forEach(trip => { %>
-                <li><%= `On ${trip.start} you rode a ${trip.motorcycle.year} ${trip.motorcycle.make} ${trip.motorcycle.model}.` %>
-                </li>
+                    <li><%= trip.start %></li>
+
                 <% }) %>
             </ul>
             <% if(rider._id.equals(user && user._id)) { %>

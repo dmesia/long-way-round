@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Long Way Round</title>
+</head>
+
+<body>
+    <nav>
+        <h2>Long Way Round - Motorcycle Diaries</h2>
+        <a href="/">Home</a>
+        <a href="/riders">Riders</a>
+        <a href="/motorcycles">Motorcycles</a>
+    </nav>
+    <main>
+        <h1>Ride Details</h1>
+        <table>
+            <thead>
+                <th>Motorcycle</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Comments</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= trip.motorcycle.year %> <%= trip.motorcycle.make %> <%= trip.motorcycle.model %> <%= trip.motorcycle.style %></td>
+                    <td><%= trip.start %></td>
+                    <td><%= trip.end %></td>
+                    <td>
+                        <form action="/trips/<%= trip._id %>" method="post">
+                            <input type="text" name="text">
+                            <button type="submit">Add Comment</button>
+                        </form>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <form action="/trips/<%= trip._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete Ride</button>
+        </form>
+    </main>
+</body>
+
+</html>

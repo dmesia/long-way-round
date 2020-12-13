@@ -19,9 +19,9 @@
         <h1>New Ride</h1>
         <form action="/trips" method="POST">
             <label>Motorcycle used:
-                <select name="motorcycles">
+                <select name="motorcycle">
                     <% motorcycles.forEach(motorcycle => { %>
-                        <option><%= motorcycle.year %> <%= motorcycle.model %></option>
+                        <option value="<%= motorcycle._id %>"><%= motorcycle.year %> <%= motorcycle.model %></option>
                     <% }) %>
                 </select>
             </label>

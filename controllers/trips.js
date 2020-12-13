@@ -16,9 +16,16 @@ function newTrip(req, res) {
     });
 };
 
+// function create(req, res) {
+//     req.user.trips.push(req.body);
+//     req.user.save(function(err) {
+//       res.redirect('/riders');
+//     });
+//   }
+
 function create(req, res) {
     const trip = new Trip(req.body);
-
+    req.user.trips.push(req.body);
     trip.save(function (err) {
         console.log(trip);
         if (err) return res.render('trips/new');
